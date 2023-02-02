@@ -2,6 +2,7 @@ Các Utill có thể cần đến
 <!-- Table of Contents -->
 # :notebook_with_decorative_cover: Table of Contents
 - [Dành cho Java](#Dành-cho-Java)
+- [Dành cho C#](#Dành-cho-C#)
 
 ## Dành cho Java
 
@@ -35,5 +36,48 @@ Các Utill có thể cần đến
         return sb.toString();
     }
    ```
+## Dành cho C#
+- 1.Validate
+- 2.Hàm nhập giá trị
 
+```C#
+public static int GetInt(string mess)
+    {
+        int a = 0;
+        try
+        {
+            Console.Write(mess);
+            a = int.Parse(Console.ReadLine()); // dùng Console.ReadLine() để nhập chữ sau đó dùng int.Parse để ép kiểu sang int
+        }
+        catch (Exception)
+        {
 
+            return GetInt(mess); // dùng đệ quy
+        }
+        return a;
+    }
+    /// <summary>
+    /// nhập số nguyên dương
+    /// </summary>
+    /// <param name="mess"></param>
+    /// <returns></returns>
+    public static int GetPositiveInteger(string mess)
+    {
+        int a = 0;
+        try
+        {
+            Console.Write(mess);
+            a = int.Parse(Console.ReadLine()); // dùng Console.ReadLine() để nhập chữ sau đó dùng int.Parse để ép kiểu sang int
+            if (a <= 0)
+            {
+                throw new Exception();
+            }
+        }
+        catch (Exception)
+        {
+
+            return GetInt(mess); // dùng đệ quy
+        }
+        return a;
+    }
+```
