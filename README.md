@@ -56,9 +56,9 @@ public static int GetInt(string mess)
         }
         return a;
     }
-    ```
+```
     
-    ```C#
+```C#
     /// <summary>
     /// nhập số nguyên dương
     /// </summary>
