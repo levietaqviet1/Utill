@@ -56,6 +56,9 @@ public static int GetInt(string mess)
         }
         return a;
     }
+    ```
+    
+    ```C#
     /// <summary>
     /// nhập số nguyên dương
     /// </summary>
@@ -76,7 +79,7 @@ public static int GetInt(string mess)
         catch (Exception)
         {
 
-            return GetInt(mess); // dùng đệ quy
+            return GetPositiveInteger(mess); // dùng đệ quy
         }
         return a;
     }
