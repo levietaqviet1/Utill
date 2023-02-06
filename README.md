@@ -59,28 +59,31 @@ public static int GetInt(string mess)
 ```
     
 ```C#
-    /// <summary>
-    /// nhập số nguyên dương
-    /// </summary>
-    /// <param name="mess"></param>
-    /// <returns></returns>
-    public static int GetPositiveInteger(string mess)
+    public static int GetPositiveInteger(string message)
     {
-        int a = 0;
-        try
+        int input = -1;
+        do
         {
-            Console.Write(mess);
-            a = int.Parse(Console.ReadLine()); // dùng Console.ReadLine() để nhập chữ sau đó dùng int.Parse để ép kiểu sang int
-            if (a <= 0)
+            try
             {
-                throw new Exception();
-            }
-        }
-        catch (Exception)
-        {
+                input = int.Parse(InputString("Input n"));
+                if (input < 1)
+                {
+                    throw new Exception();
+                }
 
-            return GetPositiveInteger(mess); // dùng đệ quy
-        }
-        return a;
+                return input;
+            }
+            catch (Exception)
+            {
+            }
+
+        } while (input == -1);
+        return input;
+    }
+    public static string InputString(string message)
+    {
+        Console.Write(message);
+        return Console.ReadLine().Trim(); // xóa khoảng trắng thừa đầu và cuỗi chuỗi
     }
 ```
