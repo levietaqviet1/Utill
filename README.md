@@ -329,7 +329,7 @@ public class FileUltis {
 
 ```
 
-3. ScannerUltis 
+3. IOManager  
 
 ```java
 package com.vti.ultis;
