@@ -10,8 +10,7 @@ Các Utill có thể cần đến
  
 - 1. ScannerUltis 
 
-  ```java
-
+```java
 package com.vti.ultis;
 
 import java.text.SimpleDateFormat;
@@ -174,7 +173,8 @@ public class ScannerUltis {
 
 }
 
-   ```
+```
+
 ## Dành cho C#
 - 1.Validate
 - 2.Hàm nhập giá trị
