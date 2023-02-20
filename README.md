@@ -11,7 +11,7 @@ Các Utill có thể cần đến
 1. ScannerUltis 
 
 ```java
-package com.vti.ultis;
+package ultis;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -179,7 +179,7 @@ public class ScannerUltis {
 
 ```java
 
-package com.vti.ultis;
+package ultis;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -332,7 +332,7 @@ public class FileUltis {
 3. IOManager  
 
 ```java
-package com.vti.ultis;
+package ultis;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
