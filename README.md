@@ -484,7 +484,7 @@ public class Validation {
      * @param msg
      * @return
      */
-    public static Date getDate(String msg, Scanner sc) {
+    public static Date getDate(String msg) {
         sdf.setLenient(false);
         Date d;
         do {
