@@ -419,6 +419,92 @@ public class IOManager {
 	}
 }
 ```
+
+4. Validation
+
+```java
+package ultis;
+
+import java.text.*;
+import java.util.*;
+
+public class Validation {
+    
+    static Scanner sc = new Scanner(System.in);
+    
+    /**
+     * Yêu cầu người dùng nhập vào một số nguyên trong khoảng từ min đến max.
+     * @param msg
+     * @param min
+     * @param max
+     * @return 
+     */
+    public static int getInt(String msg, int min, int max) {
+        int n;
+        do {
+            System.out.print(msg);
+            try {
+                n = Integer.parseInt(sc.nextLine());
+                if (min <= n && n <= max) {
+                    return n;
+                }
+                System.err.println("Must from: " + min + " -> " + max);
+            } catch (NumberFormatException ex) {
+                System.err.println("Wrong format");
+            }
+        } while (true);
+    }
+    
+    /**
+     * Yêu cầu người dùng nhập vào một chuỗi thỏa mãn một điều kiện nhất định
+     *
+     * @param msg
+     * @param pattern
+     * @param err
+     * @return
+     */
+    public static String getString(String msg, String pattern, String err) {
+        String s;
+        do {
+            System.out.print(msg);
+            s = sc.nextLine().trim();
+            if (!s.matches(pattern)) {
+                System.err.println(err);
+            }
+        } while (!s.matches(pattern));
+        return s;
+    }
+    
+    // Tạo một đối tượng SimpleDateFormat ở ngoài hàm và sử dụng lại đối tượng đó thay vì tạo mới ở mỗi lần
+    private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    
+    /**
+     * Yêu cầu người dùng nhập vào một ngày theo định dạng MM/dd/yyyy
+     *
+     * @param msg
+     * @return
+     */
+    public static Date getDate(String msg, Scanner sc) {
+        sdf.setLenient(false);
+        Date d;
+        do {
+            System.out.print(msg);
+            String date = sc.nextLine().trim();
+            try {
+                d = sdf.parse(date);
+            } catch (ParseException ex) {
+                System.err.println("Wrong format, must be MM/dd/yyyy");
+                d = null;
+            }
+        } while (d == null);
+        return d;
+    }
+    
+}
+
+```
+
+
 ## Dành cho C#
 - 1.Validate
 - 2.Hàm nhập giá trị
