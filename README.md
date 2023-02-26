@@ -510,49 +510,86 @@ public class Validation {
 - 2.Hàm nhập giá trị
 
 ```C#
-public static int GetInt(string mess)
+public class Validation
     {
-        int a = 0;
-        try
-        {
-            Console.Write(mess);
-            a = int.Parse(Console.ReadLine()); // dùng Console.ReadLine() để nhập chữ sau đó dùng int.Parse để ép kiểu sang int
-        }
-        catch (Exception)
-        {
+        private static readonly CultureInfo culture = new CultureInfo("en-US");
+        private static readonly DateTimeStyles dateStyle = DateTimeStyles.None;
 
-            return GetInt(mess); // dùng đệ quy
+        /**
+        * Yêu cầu người dùng nhập vào một số nguyên trong khoảng từ min đến max.
+        * @param msg
+        * @param min
+        * @param max
+        * @return 
+        */
+        public static int GetInt(string msg, int min, int max)
+        {
+            int n;
+            do
+            {
+                Console.Write(msg);
+                try
+                {
+                    n = int.Parse(Console.ReadLine());
+                    if (min <= n && n <= max)
+                    {
+                        return n;
+                    }
+                    Console.Error.WriteLine("Must from: " + min + " -> " + max);
+                }
+                catch (FormatException)
+                {
+                    Console.Error.WriteLine("Wrong format");
+                }
+            } while (true);
         }
-        return a;
+
+        /**
+        * Yêu cầu người dùng nhập vào một chuỗi thỏa mãn một điều kiện nhất định
+        *
+        * @param msg
+        * @param pattern
+        * @param err
+        * @return
+        */
+        public static string GetString(string msg, string pattern, string err)
+        {
+            string s;
+            bool check;
+            do
+            {
+                Console.Write(msg);
+                s = Console.ReadLine().Trim();
+                check = !System.Text.RegularExpressions.Regex.IsMatch(s, pattern);
+                if (check)
+                {
+                    Console.Error.WriteLine(err);
+                }
+            } while (check);
+            return s;
+        }
+        /**
+        * Yêu cầu người dùng nhập vào một ngày theo định dạng MM/dd/yyyy
+        *
+        * @param msg
+        * @return
+        */
+        public static DateTime GetDate(string msg, string format = "MM/dd/yyyy")
+        {
+            DateTime d;
+            do
+            {
+                Console.Write(msg);
+                string date = Console.ReadLine().Trim();
+                if (!DateTime.TryParseExact(date, format, culture, dateStyle, out d))
+                {
+                    Console.Error.WriteLine($"Wrong format, must be {format}");
+                    d = DateTime.MinValue;
+                }
+            } while (d == DateTime.MinValue);
+            return d;
+        }
     }
 ```
     
-```C#
-    public static int GetPositiveInteger(string message)
-    {
-        int input = -1;
-        do
-        {
-            try
-            {
-                input = int.Parse(InputString("Input n"));
-                if (input < 1)
-                {
-                    throw new Exception();
-                }
-
-                return input;
-            }
-            catch (Exception)
-            {
-            }
-
-        } while (input == -1);
-        return input;
-    }
-    public static string InputString(string message)
-    {
-        Console.Write(message);
-        return Console.ReadLine().Trim(); // xóa khoảng trắng thừa đầu và cuỗi chuỗi
-    }
-```
+ 
