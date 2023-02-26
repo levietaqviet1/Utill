@@ -2,7 +2,7 @@ Các Utill có thể cần đến
 <!-- Table of Contents -->
 # :notebook_with_decorative_cover: Table of Contents
 - [Dành cho Java](#Dành-cho-Java)
-- [Dành cho C#](#Dành-cho-C#)
+- [Dành cho C#](#dành-cho-c)
 
 ## Dành cho Java
 
