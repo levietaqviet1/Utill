@@ -506,8 +506,7 @@ public class Validation {
 
 
 ## Dành cho C#
-- 1.Validate
-- 2.Hàm nhập giá trị
+- 1.Validate 
 
 ```C#
 public class Validation
